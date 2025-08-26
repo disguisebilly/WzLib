@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.14)
 project(WzLib)
 
+set(WZLIB_NAME "WzLib" CACHE STRING "Name of the WzLib target")
 set(CMAKE_CXX_STANDARD 17)
 
 
@@ -41,20 +42,22 @@ foreach(IDL_FILE IN LISTS IDL_FILES)
     list(APPEND TLB_FILES ${TLB_FILE})
 endforeach()
 
-add_custom_target(IDL_ALL DEPENDS ${TLB_FILES})
+set(IDL_TARGET_NAME ${WZLIB_NAME}_IDL)
+add_custom_target(${IDL_TARGET_NAME} DEPENDS ${TLB_FILES})
 
 
 # Generate TLH files
-set(GENERATOR_NAME ${PROJECT_NAME}_TLH)
+set(GENERATOR_NAME ${WZLIB_NAME}_TLH)
 add_library(${GENERATOR_NAME} STATIC
     generate.cpp
 )
 
-add_dependencies(${GENERATOR_NAME} IDL_ALL)
+add_dependencies(${GENERATOR_NAME} ${IDL_TARGET_NAME})
 
 target_include_directories(${GENERATOR_NAME} PRIVATE
     ${CMAKE_CURRENT_BINARY_DIR}
 )
+
 
 # Process into header files
 add_custom_command(
@@ -64,7 +67,7 @@ add_custom_command(
 
 
 # Add library
-set(LIBRARY_NAME ${PROJECT_NAME})
+set(LIBRARY_NAME ${WZLIB_NAME})
 add_library(${LIBRARY_NAME} INTERFACE)
 
 add_dependencies(${LIBRARY_NAME} ${GENERATOR_NAME})
