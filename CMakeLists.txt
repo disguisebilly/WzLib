@@ -25,6 +25,9 @@ set(IDL_FILES
     IWzVector2D.idl
     IWzGr2DLayer.idl
     IWzGr2D.idl
+    # DX9 IDL
+    IWzGr2DLayer_DX9.idl
+    IWzGr2D_DX9.idl
 )
 
 set(TLB_FILES "")
