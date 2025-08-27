@@ -41,5 +41,6 @@ library WzLib
         HRESULT RenderFlash();
         HRESULT ReleaseFlash();
         HRESULT IsRenderFlash([out, retval] INT* pnRenderFlash);
+        HRESULT GetInner([out, retval] IUnknown** ppInner);
     };
 };

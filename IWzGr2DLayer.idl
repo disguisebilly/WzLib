@@ -57,5 +57,6 @@ library WzLib
         [propget] HRESULT visible([out, retval] INT* pnVisible);
         [propput] HRESULT visible([in] INT nVisible);
         HRESULT RenderFlash([in] INT nRenderFlash);
+        HRESULT GetInner([out, retval] IUnknown** ppInner);
     };
 };
