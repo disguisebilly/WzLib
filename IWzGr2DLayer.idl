@@ -56,5 +56,6 @@ library WzLib
         [propget] HRESULT animationState([out, retval] INT* pnState);
         [propget] HRESULT visible([out, retval] INT* pnVisible);
         [propput] HRESULT visible([in] INT nVisible);
+        HRESULT RenderFlash([in] INT nRenderFlash);
     };
 };
