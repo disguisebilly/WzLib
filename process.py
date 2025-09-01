@@ -11,21 +11,23 @@ LIBID_PATTERN = re.compile(
 )
 TLI_PATTERN = re.compile(r"#include\s+\"([^\"]+\.tli)\"")
 IMPORT_MAP = {
-    "IWzCanvas": ["IWzSerialize", "IWzProperty"],
-    "IWzConvex2D": ["IWzShape2D"],
-    "IWzFileSystem": ["IWzWritableNameSpace"],
-    "IWzGr2D": ["IWzGr2DLayer"],
-    "IWzGr2DLayer": ["IWzCanvas", "IWzVector2D"],
-    "IWzPackage": ["IWzSeekableArchive", "IWzNameSpace"],
-    "IWzProperty": ["IWzSerialize"],
-    "IWzResMan": ["IWzArchive"],
+    # IWzArchive
     "IWzSeekableArchive": ["IWzArchive"],
     "IWzSerialize": ["IWzArchive"],
-    "IWzShape2D": ["IWzSerialize"],
-    "IWzSound": ["IWzSerialize"],
+    "IWzProperty": ["IWzSerialize"],
+    # IWzNameSpace
+    "IWzWritableNameSpace": ["IWzNameSpace"],
+    "IWzPackage": ["IWzSeekableArchive", "IWzNameSpace"],
+    "IWzFileSystem": ["IWzWritableNameSpace"],
+    "IWzResMan": ["IWzArchive"],
     "IWzUOL": ["IWzSerialize"],
+    "IWzCanvas": ["IWzSerialize", "IWzProperty"],
+    "IWzSound": ["IWzSerialize"],
+    "IWzShape2D": ["IWzSerialize"],
+    "IWzConvex2D": ["IWzShape2D"],
     "IWzVector2D": ["IWzShape2D"],
-    "IWzWritableNameSpace": ["IWzNameSpace"]
+    "IWzGr2DLayer": ["IWzCanvas", "IWzVector2D"],
+    "IWzGr2D": ["IWzGr2DLayer"],
 }
 
 
